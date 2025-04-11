@@ -1818,3 +1818,97 @@ footer {
         height: 10px;
     }
 }
+
+/* סגנון סקציית הסניפים */
+.branches-section {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9f1f7 100%);
+    text-align: center;
+}
+
+.branches-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    margin: 40px auto;
+    max-width: 1200px;
+}
+
+.branch-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.branch-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.branch-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.branch-icon i {
+    color: white;
+    font-size: 30px;
+}
+
+.branch-card h3 {
+    color: #333;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.branch-card p {
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.branch-link {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.branch-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* התאמה למובייל עבור סקציית הסניפים */
+@media (max-width: 768px) {
+    .branches-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .branch-card {
+        padding: 20px 15px;
+    }
+    
+    .branch-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .branch-icon i {
+        font-size: 24px;
+    }
+}
