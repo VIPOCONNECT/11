@@ -43,7 +43,7 @@
     <section class="hero" id="home" style="background-image: url('https://raw.githubusercontent.com/VIPOCONNECT/11/refs/heads/main/Images/5.webp');">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>Titanium Max</h1>
+            <h1>LuxeTech</h1>
             <div class="hero-buttons">
                 <a href="#contact" class="primary-button">בקש הדגמה</a>
                 <a href="about-luxetech.html" target="_blank" class="secondary-button">גלה עוד</a>
@@ -186,7 +186,7 @@
     <!-- סקציית טיפולים מובילים -->
     <section class="treatments" id="treatments">
         <h2 class="section-title">הטיפולים המובילים</h2>
-        <p>הכירו את המערכת האסתטית המתקדמת ביותר בעולם טיטניום מקס</p>
+        <p>הכירו את המערכת האסתטית המתקדמת ביותר בעולם Titanium Max</p>
         <p>המכשיר עם טכנולוגיות מהפכניות שמביאות תוצאות אמיתיות – במגוון רחב של טיפולים רפואיים ואסתטיים.</p>
         <p>מותאם לגברים ונשים, לכל סוגי העור, לכל עונות השנה.</p>
         <p>יותר מ-15 טיפולים</p>
@@ -259,27 +259,92 @@
         
         <div class="treatments-video">
             <h3>צפו בטיפולים בפעולה</h3>
-            <div class="videos-grid">
-                <div class="video-container">
-                    <video controls>
-                        <source src="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/1.mp4" type="video/mp4">
-                        הדפדפן שלך לא תומך בניגון וידאו.
-                    </video>
-                    <h4>טיפול הסרת שיער</h4>
+            
+            <div class="video-carousel-container">
+                <!-- אזור הסרטון הראשי -->
+                <div class="main-video-container">
+                    <div class="main-video-wrapper">
+                        <video id="main-video" controls>
+                            <source src="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/1.mp4" type="video/mp4">
+                            הדפדפן שלך לא תומך בניגון וידאו.
+                        </video>
+                        <div class="main-video-info">
+                            <h4 id="main-video-title">טיפול הסרת שיער</h4>
+                            <p id="main-video-desc">טכנולוגיית Diode Laser מאפשרת הסרת שיער יעילה לכל סוגי העור והשיער.</p>
+                        </div>
+                    </div>
+                    <div class="video-nav-buttons">
+                        <button class="video-nav-button prev-video">הקודם</button>
+                        <button class="video-nav-button next-video">הבא</button>
+                    </div>
                 </div>
-                <div class="video-container">
-                    <video controls>
-                        <source src="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/2.mp4" type="video/mp4">
-                        הדפדפן שלך לא תומך בניגון וידאו.
-                    </video>
-                    <h4>טיפול חידוש עור</h4>
-                </div>
-                <div class="video-container">
-                    <video controls>
-                        <source src="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/3.mp4" type="video/mp4">
-                        הדפדפן שלך לא תומך בניגון וידאו.
-                    </video>
-                    <h4>טיפול אנטי אייג'ינג</h4>
+                
+                <!-- סרטונים ממוזערים -->
+                <div class="video-thumbnails-container">
+                    <div class="video-thumbnail active" data-video="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/1.mp4" data-title="טיפול הסרת שיער" data-desc="טכנולוגיית Diode Laser מאפשרת הסרת שיער יעילה לכל סוגי העור והשיער.">
+                        <video muted>
+                            <source src="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/1.mp4" type="video/mp4">
+                        </video>
+                        <div class="thumbnail-overlay">
+                            <span>טיפול הסרת שיער</span>
+                        </div>
+                    </div>
+                    <div class="video-thumbnail" data-video="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/2.mp4" data-title="טיפול חידוש עור" data-desc="טיפולי חידוש עור מתקדמים להצערת העור והפחתת קמטים.">
+                        <video muted>
+                            <source src="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/2.mp4" type="video/mp4">
+                        </video>
+                        <div class="thumbnail-overlay">
+                            <span>טיפול חידוש עור</span>
+                        </div>
+                    </div>
+                    <div class="video-thumbnail" data-video="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/3.mp4" data-title="טיפול אנטי אייג'ינג" data-desc="טיפולים מתקדמים למיצוק העור והפחתת סימני הגיל.">
+                        <video muted>
+                            <source src="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/3.mp4" type="video/mp4">
+                        </video>
+                        <div class="thumbnail-overlay">
+                            <span>טיפול אנטי אייג'ינג</span>
+                        </div>
+                    </div>
+                    <div class="video-thumbnail" data-video="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/9.mp4" data-title="טיפול בכלי דם" data-desc="טיפולים יעילים להסרת כלי דם נימיים ונימים בפנים ובגוף.">
+                        <video muted>
+                            <source src="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/9.mp4" type="video/mp4">
+                        </video>
+                        <div class="thumbnail-overlay">
+                            <span>טיפול בכלי דם</span>
+                        </div>
+                    </div>
+                    <div class="video-thumbnail" data-video="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/8.mp4" data-title="טיפול בפיגמנטציה" data-desc="טיפולים להסרת כתמי עור, נמשים ופיגמנטציה לקבלת עור אחיד ובהיר.">
+                        <video muted>
+                            <source src="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/8.mp4" type="video/mp4">
+                        </video>
+                        <div class="thumbnail-overlay">
+                            <span>טיפול בפיגמנטציה</span>
+                        </div>
+                    </div>
+                    <div class="video-thumbnail" data-video="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/6.mp4" data-title="טיפול בצלקות אקנה" data-desc="טיפולים מתקדמים להפחתת צלקות אקנה ושיפור מרקם העור.">
+                        <video muted>
+                            <source src="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/6.mp4" type="video/mp4">
+                        </video>
+                        <div class="thumbnail-overlay">
+                            <span>טיפול בצלקות אקנה</span>
+                        </div>
+                    </div>
+                    <div class="video-thumbnail" data-video="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/11.mp4" data-title="טיפול מיצוק עור" data-desc="טיפולי מיצוק עור בטכנולוגיית RF להידוק ומתיחת עור רפוי.">
+                        <video muted>
+                            <source src="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/11.mp4" type="video/mp4">
+                        </video>
+                        <div class="thumbnail-overlay">
+                            <span>טיפול מיצוק עור</span>
+                        </div>
+                    </div>
+                    <div class="video-thumbnail" data-video="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/10.mp4" data-title="הסרת קעקועים" data-desc="טיפולים מתקדמים להסרת קעקועים בטכנולוגיית לייזר Q-Switch.">
+                        <video muted>
+                            <source src="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/10.mp4" type="video/mp4">
+                        </video>
+                        <div class="thumbnail-overlay">
+                            <span>הסרת קעקועים</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -302,7 +367,7 @@
                         <p>תל אביב</p>
                     </div>
                 </div>
-                <p class="testimonial-text">"המכשיר טיטניום מקס שינה את העסק שלנו. הלקוחות מרוצים מהתוצאות והיכולת להציע מגוון טיפולים הגדילה את ההכנסות שלנו ב-40%."</p>
+                <p class="testimonial-text">"המכשיר Titanium Max שינה את העסק שלנו. הלקוחות מרוצים מהתוצאות והיכולת להציע מגוון טיפולים הגדילה את ההכנסות שלנו ב-40%."</p>
                 <div class="testimonial-stars">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -320,7 +385,7 @@
                         <p>מרכז אסתטיקה מתקדם</p>
                     </div>
                 </div>
-                <p class="testimonial-text">"כרופאת עור, חשוב לי לעבוד עם הטכנולוגיה הטובה ביותר. טיטניום מקס מספק תוצאות מצוינות בטיפולי עור מורכבים, במיוחד בעור כהה."</p>
+                <p class="testimonial-text">"כרופאת עור, חשוב לי לעבוד עם הטכנולוגיה הטובה ביותר. Titanium Max מספק תוצאות מצוינות בטיפולי עור מורכבים, במיוחד בעור כהה."</p>
                 <div class="testimonial-stars">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>

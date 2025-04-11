@@ -93,51 +93,68 @@ document.addEventListener('DOMContentLoaded', function() {
     const techButtons = document.querySelectorAll('.tech-button');
     const showcaseImage = document.getElementById('tech-showcase-image');
     
-    techButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const techType = this.getAttribute('data-tech');
-            console.log(`נלחץ: ${techType}`);
-            
-            // הסרת הקלאס active מכל הכפתורים
-            techButtons.forEach(item => {
-                item.classList.remove('active');
-            });
-            
-            // הוספת קלאס active לכפתור שנלחץ
-            this.classList.add('active');
-            
-            // שינוי התמונה בהתאם לטכנולוגיה שנבחרה
-            if (showcaseImage) {
-                // מיפוי נתיבי התמונות
-                const imagePaths = {
-                    'diode-laser': 'https://raw.githubusercontent.com/VIPOCONNECT/11/refs/heads/main/Images/4.Webp',
-                    'ipl': 'https://raw.githubusercontent.com/VIPOCONNECT/11/refs/heads/main/Images/2.Webp',
-                    'ndyag': 'https://raw.githubusercontent.com/VIPOCONNECT/11/refs/heads/main/Images/3.Webp',
-                    'rf': 'https://raw.githubusercontent.com/VIPOCONNECT/11/refs/heads/main/Images/1.Webp'
-                };
-                
-                // הוספת אפקט התפעמות לתמונה
-                showcaseImage.style.opacity = '0';
-                showcaseImage.style.transform = 'scale(0.95)';
-                
-                // שינוי התמונה לאחר השהייה קצרה
-                setTimeout(() => {
-                    showcaseImage.src = imagePaths[techType];
-                    showcaseImage.alt = `טכנולוגיית ${techType}`;
-                    
-                    // החזרת התמונה לנראות
-                    setTimeout(() => {
-                        showcaseImage.style.opacity = '1';
-                        showcaseImage.style.transform = 'scale(1)';
-                    }, 50);
-                }, 300);
-            }
+    // מערך של סוגי הטכנולוגיות
+    const techTypes = ['diode-laser', 'ipl', 'ndyag', 'rf'];
+    let currentTechIndex = 0;
+    let autoChangeInterval;
+    
+    // מיפוי נתיבי התמונות
+    const imagePaths = {
+        'diode-laser': 'https://raw.githubusercontent.com/VIPOCONNECT/11/refs/heads/main/Images/4.Webp',
+        'ipl': 'https://raw.githubusercontent.com/VIPOCONNECT/11/refs/heads/main/Images/2.Webp',
+        'ndyag': 'https://raw.githubusercontent.com/VIPOCONNECT/11/refs/heads/main/Images/3.Webp',
+        'rf': 'https://raw.githubusercontent.com/VIPOCONNECT/11/refs/heads/main/Images/1.Webp'
+    };
+    
+    // פונקציה להחלפת התמונה והכפתור הפעיל
+    function changeTechImage(techType) {
+        // הסרת הקלאס active מכל הכפתורים
+        techButtons.forEach(item => {
+            item.classList.remove('active');
         });
-    });
+        
+        // מציאת הכפתור המתאים והוספת קלאס active
+        const activeButton = document.querySelector(`.tech-button[data-tech="${techType}"]`);
+        if (activeButton) {
+            activeButton.classList.add('active');
+        }
+        
+        if (showcaseImage) {
+            // הוספת אפקט התפעמות לתמונה
+            showcaseImage.style.opacity = '0';
+            showcaseImage.style.transform = 'scale(0.95)';
+            
+            // שינוי התמונה לאחר השהייה קצרה
+            setTimeout(() => {
+                showcaseImage.src = imagePaths[techType];
+                showcaseImage.alt = `טכנולוגיית ${techType}`;
+                
+                // החזרת התמונה לנראות
+                setTimeout(() => {
+                    showcaseImage.style.opacity = '1';
+                    showcaseImage.style.transform = 'scale(1)';
+                }, 50);
+            }, 300);
+        }
+    }
+    
+    // פונקציה להתחלת החלפה אוטומטית
+    function startAutoChange() {
+        // ניקוי אינטרוול קודם אם קיים
+        if (autoChangeInterval) {
+            clearInterval(autoChangeInterval);
+        }
+        
+        autoChangeInterval = setInterval(() => {
+            currentTechIndex = (currentTechIndex + 1) % techTypes.length;
+            changeTechImage(techTypes[currentTechIndex]);
+        }, 5000); // החלפה כל 5 שניות
+    }
     
     // הגדרת הטכנולוגיה הראשונה כפעילה בטעינת הדף
     if (techButtons.length > 0 && showcaseImage) {
-        techButtons[0].classList.add('active');
+        changeTechImage(techTypes[0]);
+        startAutoChange();
     }
 });
 
@@ -164,6 +181,97 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// פונקציונליות קרוסלת הסרטונים האינטראקטיבית
+document.addEventListener('DOMContentLoaded', function() {
+    // איתור אלמנטים של קרוסלת הסרטונים
+    const mainVideo = document.getElementById('main-video');
+    const mainVideoTitle = document.getElementById('main-video-title');
+    const mainVideoDesc = document.getElementById('main-video-desc');
+    const videoThumbnails = document.querySelectorAll('.video-thumbnail');
+    const prevButton = document.querySelector('.prev-video');
+    const nextButton = document.querySelector('.next-video');
+    
+    let currentVideoIndex = 0;
+    const totalVideos = videoThumbnails.length;
+    
+    // פונקציה להחלפת הסרטון הראשי
+    function changeMainVideo(index) {
+        // הסרת קלאס active מכל התמונות הממוזערות
+        videoThumbnails.forEach(thumbnail => {
+            thumbnail.classList.remove('active');
+        });
+        
+        // הוספת קלאס active לתמונה הממוזערת הנוכחית
+        videoThumbnails[index].classList.add('active');
+        
+        // קבלת הנתונים מהתמונה הממוזערת
+        const videoSrc = videoThumbnails[index].getAttribute('data-video');
+        const videoTitle = videoThumbnails[index].getAttribute('data-title');
+        const videoDesc = videoThumbnails[index].getAttribute('data-desc');
+        
+        // עצירת הסרטון הנוכחי
+        mainVideo.pause();
+        
+        // עדכון הסרטון הראשי
+        mainVideo.src = videoSrc;
+        mainVideoTitle.textContent = videoTitle;
+        mainVideoDesc.textContent = videoDesc;
+        
+        // טעינה מחדש של הסרטון
+        mainVideo.load();
+        
+        // עדכון האינדקס הנוכחי
+        currentVideoIndex = index;
+    }
+    
+    // אירועי לחיצה על תמונות ממוזערות
+    videoThumbnails.forEach((thumbnail, index) => {
+        thumbnail.addEventListener('click', function() {
+            changeMainVideo(index);
+        });
+    });
+    
+    // אירועי לחיצה על כפתורי ניווט
+    prevButton.addEventListener('click', function() {
+        let newIndex = currentVideoIndex - 1;
+        if (newIndex < 0) {
+            newIndex = totalVideos - 1;
+        }
+        changeMainVideo(newIndex);
+    });
+    
+    nextButton.addEventListener('click', function() {
+        let newIndex = currentVideoIndex + 1;
+        if (newIndex >= totalVideos) {
+            newIndex = 0;
+        }
+        changeMainVideo(newIndex);
+    });
+    
+    // פונקציונליות החלפה אוטומטית
+    let autoplayInterval;
+    
+    function startAutoplay() {
+        autoplayInterval = setInterval(() => {
+            let newIndex = currentVideoIndex + 1;
+            if (newIndex >= totalVideos) {
+                newIndex = 0;
+            }
+            changeMainVideo(newIndex);
+        }, 10000); // החלפה כל 10 שניות
+    }
+    
+    function stopAutoplay() {
+        clearInterval(autoplayInterval);
+    }
+    
+    // הפסקת החלפה אוטומטית באינטראקציה עם המשתמש
+    document.querySelector('.video-carousel-container').addEventListener('mouseenter', stopAutoplay);
+    document.querySelector('.video-carousel-container').addEventListener('mouseleave', startAutoplay);
+    
+    // התחלת החלפה אוטומטית
+    startAutoplay();
 
 // פונקציונליות גלריית התמונות
 document.addEventListener('DOMContentLoaded', function() {
@@ -192,6 +300,7 @@ document.addEventListener('DOMContentLoaded', function() {
             openModal(currentIndex);
         });
     });
+});
     
     // פתיחת המודאל עם התמונה הנוכחית
     function openModal(index) {
