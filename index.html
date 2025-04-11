@@ -260,90 +260,140 @@
         <div class="treatments-video">
             <h3>צפו בטיפולים בפעולה</h3>
             
-            <div class="video-carousel-container">
-                <!-- אזור הסרטון הראשי -->
-                <div class="main-video-container">
-                    <div class="main-video-wrapper">
-                        <video id="main-video" controls>
-                            <source src="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/1.mp4" type="video/mp4">
-                            הדפדפן שלך לא תומך בניגון וידאו.
-                        </video>
-                        <div class="main-video-info">
-                            <h4 id="main-video-title">טיפול הסרת שיער</h4>
-                            <p id="main-video-desc">טכנולוגיית Diode Laser מאפשרת הסרת שיער יעילה לכל סוגי העור והשיער.</p>
-                        </div>
+            <div class="mobile-video-accordion">
+                <!-- טיפול הסרת שיער -->
+                <div class="video-accordion-item active">
+                    <div class="video-accordion-header">
+                        <h4>טיפול הסרת שיער</h4>
+                        <div class="accordion-icon"><i class="fas fa-play-circle"></i></div>
                     </div>
-                    <div class="video-nav-buttons">
-                        <button class="video-nav-button prev-video">הקודם</button>
-                        <button class="video-nav-button next-video">הבא</button>
+                    <div class="video-accordion-content">
+                        <div class="video-wrapper">
+                            <video controls preload="none" poster="https://raw.githubusercontent.com/VIPOCONNECT/11/refs/heads/main/Images/thumb1.jpg">
+                                <source src="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/1.mp4" type="video/mp4">
+                                הדפדפן שלך לא תומך בניגון וידאו.
+                            </video>
+                        </div>
+                        <p class="video-description">טכנולוגיית Diode Laser מאפשרת הסרת שיער יעילה לכל סוגי העור והשיער.</p>
                     </div>
                 </div>
                 
-                <!-- סרטונים ממוזערים -->
-                <div class="video-thumbnails-container">
-                    <div class="video-thumbnail active" data-video="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/1.mp4" data-title="טיפול הסרת שיער" data-desc="טכנולוגיית Diode Laser מאפשרת הסרת שיער יעילה לכל סוגי העור והשיער.">
-                        <video muted>
-                            <source src="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/1.mp4" type="video/mp4">
-                        </video>
-                        <div class="thumbnail-overlay">
-                            <span>טיפול הסרת שיער</span>
-                        </div>
+                <!-- טיפול חידוש עור -->
+                <div class="video-accordion-item">
+                    <div class="video-accordion-header">
+                        <h4>טיפול חידוש עור</h4>
+                        <div class="accordion-icon"><i class="fas fa-play-circle"></i></div>
                     </div>
-                    <div class="video-thumbnail" data-video="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/2.mp4" data-title="טיפול חידוש עור" data-desc="טיפולי חידוש עור מתקדמים להצערת העור והפחתת קמטים.">
-                        <video muted>
-                            <source src="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/2.mp4" type="video/mp4">
-                        </video>
-                        <div class="thumbnail-overlay">
-                            <span>טיפול חידוש עור</span>
+                    <div class="video-accordion-content">
+                        <div class="video-wrapper">
+                            <video controls preload="none" poster="https://raw.githubusercontent.com/VIPOCONNECT/11/refs/heads/main/Images/thumb2.jpg">
+                                <source src="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/2.mp4" type="video/mp4">
+                                הדפדפן שלך לא תומך בניגון וידאו.
+                            </video>
                         </div>
+                        <p class="video-description">טיפולי חידוש עור מתקדמים להצערת העור והפחתת קמטים.</p>
                     </div>
-                    <div class="video-thumbnail" data-video="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/3.mp4" data-title="טיפול אנטי אייג'ינג" data-desc="טיפולים מתקדמים למיצוק העור והפחתת סימני הגיל.">
-                        <video muted>
-                            <source src="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/3.mp4" type="video/mp4">
-                        </video>
-                        <div class="thumbnail-overlay">
-                            <span>טיפול אנטי אייג'ינג</span>
-                        </div>
+                </div>
+                
+                <!-- טיפול אנטי אייג'ינג -->
+                <div class="video-accordion-item">
+                    <div class="video-accordion-header">
+                        <h4>טיפול אנטי אייג'ינג</h4>
+                        <div class="accordion-icon"><i class="fas fa-play-circle"></i></div>
                     </div>
-                    <div class="video-thumbnail" data-video="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/9.mp4" data-title="טיפול בכלי דם" data-desc="טיפולים יעילים להסרת כלי דם נימיים ונימים בפנים ובגוף.">
-                        <video muted>
-                            <source src="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/9.mp4" type="video/mp4">
-                        </video>
-                        <div class="thumbnail-overlay">
-                            <span>טיפול בכלי דם</span>
+                    <div class="video-accordion-content">
+                        <div class="video-wrapper">
+                            <video controls preload="none" poster="https://raw.githubusercontent.com/VIPOCONNECT/11/refs/heads/main/Images/thumb3.jpg">
+                                <source src="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/3.mp4" type="video/mp4">
+                                הדפדפן שלך לא תומך בניגון וידאו.
+                            </video>
                         </div>
+                        <p class="video-description">טיפולים מתקדמים למיצוק העור והפחתת סימני הגיל.</p>
                     </div>
-                    <div class="video-thumbnail" data-video="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/8.mp4" data-title="טיפול בפיגמנטציה" data-desc="טיפולים להסרת כתמי עור, נמשים ופיגמנטציה לקבלת עור אחיד ובהיר.">
-                        <video muted>
-                            <source src="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/8.mp4" type="video/mp4">
-                        </video>
-                        <div class="thumbnail-overlay">
-                            <span>טיפול בפיגמנטציה</span>
-                        </div>
+                </div>
+                
+                <!-- טיפול בכלי דם -->
+                <div class="video-accordion-item">
+                    <div class="video-accordion-header">
+                        <h4>טיפול בכלי דם</h4>
+                        <div class="accordion-icon"><i class="fas fa-play-circle"></i></div>
                     </div>
-                    <div class="video-thumbnail" data-video="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/6.mp4" data-title="טיפול בצלקות אקנה" data-desc="טיפולים מתקדמים להפחתת צלקות אקנה ושיפור מרקם העור.">
-                        <video muted>
-                            <source src="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/6.mp4" type="video/mp4">
-                        </video>
-                        <div class="thumbnail-overlay">
-                            <span>טיפול בצלקות אקנה</span>
+                    <div class="video-accordion-content">
+                        <div class="video-wrapper">
+                            <video controls preload="none" poster="https://raw.githubusercontent.com/VIPOCONNECT/11/refs/heads/main/Images/thumb4.jpg">
+                                <source src="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/9.mp4" type="video/mp4">
+                                הדפדפן שלך לא תומך בניגון וידאו.
+                            </video>
                         </div>
+                        <p class="video-description">טיפולים יעילים להסרת כלי דם נימיים ונימים בפנים ובגוף.</p>
                     </div>
-                    <div class="video-thumbnail" data-video="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/11.mp4" data-title="טיפול מיצוק עור" data-desc="טיפולי מיצוק עור בטכנולוגיית RF להידוק ומתיחת עור רפוי.">
-                        <video muted>
-                            <source src="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/11.mp4" type="video/mp4">
-                        </video>
-                        <div class="thumbnail-overlay">
-                            <span>טיפול מיצוק עור</span>
-                        </div>
+                </div>
+                
+                <!-- טיפול בפיגמנטציה -->
+                <div class="video-accordion-item">
+                    <div class="video-accordion-header">
+                        <h4>טיפול בפיגמנטציה</h4>
+                        <div class="accordion-icon"><i class="fas fa-play-circle"></i></div>
                     </div>
-                    <div class="video-thumbnail" data-video="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/10.mp4" data-title="הסרת קעקועים" data-desc="טיפולים מתקדמים להסרת קעקועים בטכנולוגיית לייזר Q-Switch.">
-                        <video muted>
-                            <source src="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/10.mp4" type="video/mp4">
-                        </video>
-                        <div class="thumbnail-overlay">
-                            <span>הסרת קעקועים</span>
+                    <div class="video-accordion-content">
+                        <div class="video-wrapper">
+                            <video controls preload="none" poster="https://raw.githubusercontent.com/VIPOCONNECT/11/refs/heads/main/Images/thumb5.jpg">
+                                <source src="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/8.mp4" type="video/mp4">
+                                הדפדפן שלך לא תומך בניגון וידאו.
+                            </video>
                         </div>
+                        <p class="video-description">טיפולים להסרת כתמי עור, נמשים ופיגמנטציה לקבלת עור אחיד ובהיר.</p>
+                    </div>
+                </div>
+                
+                <!-- טיפול בצלקות אקנה -->
+                <div class="video-accordion-item">
+                    <div class="video-accordion-header">
+                        <h4>טיפול בצלקות אקנה</h4>
+                        <div class="accordion-icon"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="video-accordion-content">
+                        <div class="video-wrapper">
+                            <video controls preload="none" poster="https://raw.githubusercontent.com/VIPOCONNECT/11/refs/heads/main/Images/thumb6.jpg">
+                                <source src="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/6.mp4" type="video/mp4">
+                                הדפדפן שלך לא תומך בניגון וידאו.
+                            </video>
+                        </div>
+                        <p class="video-description">טיפולים מתקדמים להפחתת צלקות אקנה ושיפור מרקם העור.</p>
+                    </div>
+                </div>
+                
+                <!-- טיפול מיצוק עור -->
+                <div class="video-accordion-item">
+                    <div class="video-accordion-header">
+                        <h4>טיפול מיצוק עור</h4>
+                        <div class="accordion-icon"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="video-accordion-content">
+                        <div class="video-wrapper">
+                            <video controls preload="none" poster="https://raw.githubusercontent.com/VIPOCONNECT/11/refs/heads/main/Images/thumb7.jpg">
+                                <source src="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/11.mp4" type="video/mp4">
+                                הדפדפן שלך לא תומך בניגון וידאו.
+                            </video>
+                        </div>
+                        <p class="video-description">טיפולי מיצוק עור בטכנולוגיית RF להידוק ומתיחת עור רפוי.</p>
+                    </div>
+                </div>
+                
+                <!-- הסרת קעקועים -->
+                <div class="video-accordion-item">
+                    <div class="video-accordion-header">
+                        <h4>הסרת קעקועים</h4>
+                        <div class="accordion-icon"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="video-accordion-content">
+                        <div class="video-wrapper">
+                            <video controls preload="none" poster="https://raw.githubusercontent.com/VIPOCONNECT/11/refs/heads/main/Images/thumb8.jpg">
+                                <source src="https://cdn.jsdelivr.net/gh/VIPOCONNECT/11/videos/10.mp4" type="video/mp4">
+                                הדפדפן שלך לא תומך בניגון וידאו.
+                            </video>
+                        </div>
+                        <p class="video-description">טיפולים מתקדמים להסרת קעקועים בטכנולוגיית לייזר Q-Switch.</p>
                     </div>
                 </div>
             </div>

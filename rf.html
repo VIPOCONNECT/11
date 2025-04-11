@@ -28,6 +28,19 @@
             color: #1a2a6c;
             font-size: 2.5rem;
             margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .tech-page-header h1:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(45deg, #1a2a6c, #4e54c8);
+            bottom: -10px;
+            left: 25%;
+            border-radius: 2px;
         }
         
         .tech-page-content {
@@ -50,14 +63,31 @@
             height: auto;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .tech-page-image img:hover {
+            transform: scale(1.02);
         }
         
         .tech-page-text h2 {
             color: #1a2a6c;
             font-size: 1.8rem;
-            margin: 20px 0 15px;
+            margin: 30px 0 20px;
             border-bottom: 2px solid #f0f0f0;
             padding-bottom: 10px;
+            position: relative;
+        }
+        
+        .tech-page-text h2:before {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(45deg, #1a2a6c, #4e54c8);
+            bottom: -2px;
+            right: 0;
+            border-radius: 2px;
         }
         
         .tech-page-text p {
@@ -66,18 +96,54 @@
             margin-bottom: 20px;
         }
         
-        .tech-page-text ul {
-            padding-right: 20px;
-            margin-bottom: 20px;
+        .rf-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
         }
         
-        .tech-page-text li {
+        .rf-benefit-item {
+            background: linear-gradient(to bottom right, #f8f9fa, #e9ecef);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .rf-benefit-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        
+        .rf-benefit-item h3 {
+            color: #1a2a6c;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(78, 84, 200, 0.2);
+            padding-bottom: 8px;
+        }
+        
+        .rf-benefit-item p {
+            margin-bottom: 0;
+            font-size: 1rem;
+        }
+        
+        .rf-advantages {
+            padding-right: 20px;
+            margin-bottom: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 10px 20px;
+        }
+        
+        .rf-advantages li {
             margin-bottom: 10px;
             position: relative;
             padding-right: 25px;
         }
         
-        .tech-page-text li:before {
+        .rf-advantages li:before {
             content: "\f00c";
             font-family: "Font Awesome 6 Free";
             font-weight: 900;
@@ -86,9 +152,43 @@
             color: #4e54c8;
         }
         
+        .international-note {
+            background: linear-gradient(45deg, #1a2a6c, #4e54c8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .international-note:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/></svg>');
+            background-size: 100px 100px;
+            opacity: 0.3;
+        }
+        
+        .international-note h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .international-note p {
+            margin-bottom: 0;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
         .back-button {
             display: inline-block;
-            margin-top: 30px;
+            margin-top: 40px;
             background: linear-gradient(45deg, #1a2a6c, #4e54c8);
             color: white;
             padding: 12px 25px;
@@ -120,6 +220,24 @@
             
             .tech-page-text {
                 flex: 1.5;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .rf-benefits {
+                grid-template-columns: 1fr;
+            }
+            
+            .rf-advantages {
+                grid-template-columns: 1fr;
+            }
+            
+            .tech-page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .tech-page-text h2 {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -158,26 +276,66 @@
             </div>
             
             <div class="tech-page-text">
-                <h2>מה זה RF?</h2>
-                <p>טכנולוגיית RF (Radio Frequency) משתמשת בגלי רדיו ליצירת חום ברקמות העמוקות של העור, מה שמעודד ייצור קולגן ואלסטין ומביא למיצוק העור. הטכנולוגיה מאפשרת טיפול לא פולשני להפחתת סימני הזדקנות והשגת מראה צעיר יותר.</p>
+                <h2>RF – גלי רדיו למיצוק וחידוש העור</h2>
+                <p>טכנולוגיית RF (Radio Frequency) מביאה את הקדמה הטכנולוגית לעולם האסתטיקה – עם תוצאות נראות לעין כבר מהטיפול הראשון. בעזרת חימום מבוקר של שכבות העור העמוקות, מתקבל אפקט של מתיחה, מיצוק והחלקה טבעית – ללא ניתוח, ללא כאב וללא זמן החלמה.</p>
+                
+                <h2>איך הטכנולוגיה עובדת?</h2>
+                <p>גלי הרדיו חודרים דרך שכבות העור ומגיעים לרקמות העמוקות. האנרגיה מומרת לחום ברקמה, מה שגורם לכיווץ מיידי של סיבי הקולגן הקיימים ומעודד ייצור של קולגן ואלסטין חדשים. התהליך מוביל למיצוק העור, הפחתת קמטים ושיפור מרקם העור לאורך זמן.</p>
+                
+                <h2>מה ניתן להשיג עם RF?</h2>
+                <div class="rf-benefits">
+                    <div class="rf-benefit-item">
+                        <h3>מיצוק עור הפנים והצוואר</h3>
+                        <p>שיפור קווי מתאר, טיפול ברפיון עור והחזרת מראה צעיר ומתוח.</p>
+                    </div>
+                    
+                    <div class="rf-benefit-item">
+                        <h3>החלקת קמטים וקמטוטים</h3>
+                        <p>במיוחד סביב העיניים, השפתיים וקו הלסת.</p>
+                    </div>
+                    
+                    <div class="rf-benefit-item">
+                        <h3>עיצוב הגוף ומתיחת עור רפוי</h3>
+                        <p>באזורים כמו הבטן, הירכיים, הזרועות והישבן.</p>
+                    </div>
+                    
+                    <div class="rf-benefit-item">
+                        <h3>הפחתת צלוליט והצרת היקפים</h3>
+                        <p>גלים תת-עוריים מסייעים בפירוק מצבורי שומן ושיפור מראה עור "תפוז".</p>
+                    </div>
+                    
+                    <div class="rf-benefit-item">
+                        <h3>שיפור מרקם וגמישות העור</h3>
+                        <p>הפעלה טבעית של ייצור קולגן ואלסטין.</p>
+                    </div>
+                    
+                    <div class="rf-benefit-item">
+                        <h3>התחדשות עור ושיפור זרימת דם</h3>
+                        <p>התהליך מעודד פעילות תאים ומפחית נפיחויות.</p>
+                    </div>
+                </div>
                 
                 <h2>יתרונות הטכנולוגיה</h2>
-                <ul>
+                <ul class="rf-advantages">
                     <li>מיצוק עור ללא ניתוח</li>
                     <li>הפחתת קמטים וקמטוטים</li>
                     <li>שיפור מרקם העור</li>
                     <li>גירוי ייצור קולגן טבעי</li>
                     <li>תוצאות נראות לעין כבר מהטיפול הראשון</li>
+                    <li>ללא כאב וללא זמן החלמה</li>
+                    <li>מתאים לנשים ולגברים כאחד</li>
                 </ul>
                 
-                <h2>איך הטכנולוגיה עובדת?</h2>
-                <p>גלי הרדיו חודרים דרך שכבות העור ומגיעים לרקמות העמוקות. האנרגיה מומרת לחום ברקמה, מה שגורם לכיווץ מיידי של סיבי הקולגן הקיימים ומעודד ייצור של קולגן ואלסטין חדשים. התהליך מוביל למיצוק העור, הפחתת קמטים ושיפור מרקם העור לאורך זמן.</p>
-                
                 <h2>אזורי טיפול</h2>
-                <p>פנים, צוואר, מחשוף, זרועות, בטן, ירכיים.</p>
+                <p>פנים, צוואר, מחשוף, זרועות, בטן, ירכיים, ישבן.</p>
                 
                 <h2>מספר טיפולים מומלץ</h2>
-                <p>לתוצאות אופטימליות מומלץ לבצע סדרה של 6-8 טיפולים במרווחים של 1-2 שבועות, ולאחר מכן טיפולי תחזוקה אחת ל-3-6 חודשים.</p>
+                <p>לתוצאות אופטימליות מומלץ לבצע סדרה של 6-8 טיפולים במרווחים של 1-2 שבועות, ולאחר מכן טיפולי תחזוקה אחת ל-3-6 חודשים. התוצאות מצטברות ונשמרות לאורך זמן – והכל במכשור בטוח, מתקדם ומאושר.</p>
+                
+                <div class="international-note">
+                    <h3>RF Technology Worldwide</h3>
+                    <p>Radio Frequency technology is globally recognized as one of the most effective non-invasive treatments for skin tightening and rejuvenation. Used in premium clinics across Europe, America, and Asia, our RF technology meets international standards for safety and efficacy.</p>
+                </div>
                 
                 <a href="index.html#technologies" class="back-button"><i class="fas fa-arrow-right"></i> חזרה לכל הטכנולוגיות</a>
             </div>

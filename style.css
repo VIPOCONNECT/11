@@ -2042,3 +2042,125 @@ footer {
         font-size: 24px;
     }
 }
+
+/* גלריית אקורדיון לסרטונים במובייל */
+.mobile-video-accordion {
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.video-accordion-item {
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    overflow: hidden;
+}
+
+.video-accordion-item:last-child {
+    border-bottom: none;
+}
+
+.video-accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    cursor: pointer;
+    background: linear-gradient(to right, #f8f9fa, #e9ecef);
+    transition: all 0.3s ease;
+}
+
+.video-accordion-item.active .video-accordion-header {
+    background: linear-gradient(to right, #1a2a6c, #4e54c8);
+    color: white;
+}
+
+.video-accordion-header h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.accordion-icon {
+    font-size: 1.2rem;
+    color: #4e54c8;
+    transition: all 0.3s ease;
+}
+
+.video-accordion-item.active .accordion-icon {
+    color: white;
+    transform: rotate(90deg);
+}
+
+.video-accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.video-accordion-item.active .video-accordion-content {
+    max-height: 1000px; /* גדול מספיק כדי להכיל את התוכן */
+}
+
+.video-wrapper {
+    position: relative;
+    padding-top: 56.25%; /* יחס 16:9 */
+    background-color: #000;
+}
+
+.video-wrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-description {
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #333;
+    border-top: 1px solid #eee;
+}
+
+/* תמיכה במסכים גדולים */
+@media (min-width: 769px) {
+    .mobile-video-accordion {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .video-accordion-item {
+        border: 1px solid #eee;
+        border-radius: 10px;
+        margin-bottom: 0;
+    }
+    
+    .video-accordion-item:nth-child(1),
+    .video-accordion-item:nth-child(2) {
+        grid-column: span 1;
+    }
+}
+
+/* תמיכה במסכים קטנים מאוד */
+@media (max-width: 480px) {
+    .video-accordion-header {
+        padding: 12px 15px;
+    }
+    
+    .video-accordion-header h4 {
+        font-size: 1rem;
+    }
+    
+    .video-description {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+    }
+}

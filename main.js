@@ -182,9 +182,94 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// פונקציונליות קרוסלת הסרטונים האינטראקטיבית
+// פונקציונליות גלריית האקורדיון לסרטונים במובייל
 document.addEventListener('DOMContentLoaded', function() {
-    // איתור אלמנטים של קרוסלת הסרטונים
+    // איתור אלמנטים של גלריית האקורדיון
+    const accordionItems = document.querySelectorAll('.video-accordion-item');
+    
+    // פונקציה לפתיחה וסגירה של פריטי אקורדיון
+    function toggleAccordion(item) {
+        // בדיקה אם הפריט כבר פתוח
+        const isActive = item.classList.contains('active');
+        
+        // סגירת כל הפריטים
+        accordionItems.forEach(accordionItem => {
+            // עצירת כל הסרטונים
+            const video = accordionItem.querySelector('video');
+            if (video) {
+                video.pause();
+                video.currentTime = 0;
+            }
+            accordionItem.classList.remove('active');
+        });
+        
+        // אם הפריט לא היה פתוח, פתח אותו
+        if (!isActive) {
+            item.classList.add('active');
+            
+            // טעינה והפעלה של הסרטון
+            const video = item.querySelector('video');
+            if (video) {
+                // טעינת הסרטון רק בפעם הראשונה שנפתח
+                if (video.getAttribute('data-loaded') !== 'true') {
+                    const source = video.querySelector('source');
+                    if (source) {
+                        video.load();
+                        video.setAttribute('data-loaded', 'true');
+                    }
+                }
+                
+                // הפעלת הסרטון לאחר שהאנימציה של פתיחת האקורדיון הסתיימה
+                setTimeout(() => {
+                    video.play().catch(e => {
+                        console.log('Auto-play prevented:', e);
+                    });
+                }, 500);
+            }
+        }
+    }
+    
+    // הוספת מאזיני אירועים לכותרות האקורדיון
+    accordionItems.forEach(item => {
+        const header = item.querySelector('.video-accordion-header');
+        header.addEventListener('click', () => {
+            toggleAccordion(item);
+        });
+    });
+    
+    // פתיחת הפריט הראשון כברירת מחדל
+    if (accordionItems.length > 0) {
+        toggleAccordion(accordionItems[0]);
+    }
+    
+    // אופטימיזציה למובייל - טעינת סרטונים רק כשהם נראים
+    if ('IntersectionObserver' in window) {
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const item = entry.target;
+                    const video = item.querySelector('video');
+                    if (video && !video.getAttribute('poster')) {
+                        // טעינת תמונת הפוסטר
+                        const posterUrl = video.dataset.poster;
+                        if (posterUrl) {
+                            video.setAttribute('poster', posterUrl);
+                        }
+                    }
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        // הוספת כל פריטי האקורדיון לצפייה
+        accordionItems.forEach(item => {
+            videoObserver.observe(item);
+        });
+    }
+});
+
+// פונקציונליות קרוסלת הסרטונים האינטראקטיבית (נשמרת לתאימות אחורה)
+document.addEventListener('DOMContentLoaded', function() {
+    // בדיקה אם אלמנטי הקרוסלה קיימים
     const mainVideo = document.getElementById('main-video');
     const mainVideoTitle = document.getElementById('main-video-title');
     const mainVideoDesc = document.getElementById('main-video-desc');
@@ -192,86 +277,95 @@ document.addEventListener('DOMContentLoaded', function() {
     const prevButton = document.querySelector('.prev-video');
     const nextButton = document.querySelector('.next-video');
     
-    let currentVideoIndex = 0;
-    const totalVideos = videoThumbnails.length;
-    
-    // פונקציה להחלפת הסרטון הראשי
-    function changeMainVideo(index) {
-        // הסרת קלאס active מכל התמונות הממוזערות
-        videoThumbnails.forEach(thumbnail => {
-            thumbnail.classList.remove('active');
+    // אם אלמנטי הקרוסלה קיימים, הפעל את הפונקציונליות
+    if (mainVideo && videoThumbnails.length > 0) {
+        let currentVideoIndex = 0;
+        const totalVideos = videoThumbnails.length;
+        
+        // פונקציה להחלפת הסרטון הראשי
+        function changeMainVideo(index) {
+            // הסרת קלאס active מכל התמונות הממוזערות
+            videoThumbnails.forEach(thumbnail => {
+                thumbnail.classList.remove('active');
+            });
+            
+            // הוספת קלאס active לתמונה הממוזערת הנוכחית
+            videoThumbnails[index].classList.add('active');
+            
+            // קבלת הנתונים מהתמונה הממוזערת
+            const videoSrc = videoThumbnails[index].getAttribute('data-video');
+            const videoTitle = videoThumbnails[index].getAttribute('data-title');
+            const videoDesc = videoThumbnails[index].getAttribute('data-desc');
+            
+            // עצירת הסרטון הנוכחי
+            mainVideo.pause();
+            
+            // עדכון הסרטון הראשי
+            mainVideo.src = videoSrc;
+            mainVideoTitle.textContent = videoTitle;
+            mainVideoDesc.textContent = videoDesc;
+            
+            // טעינה מחדש של הסרטון
+            mainVideo.load();
+            
+            // עדכון האינדקס הנוכחי
+            currentVideoIndex = index;
+        }
+        
+        // אירועי לחיצה על תמונות ממוזערות
+        videoThumbnails.forEach((thumbnail, index) => {
+            thumbnail.addEventListener('click', function() {
+                changeMainVideo(index);
+            });
         });
         
-        // הוספת קלאס active לתמונה הממוזערת הנוכחית
-        videoThumbnails[index].classList.add('active');
-        
-        // קבלת הנתונים מהתמונה הממוזערת
-        const videoSrc = videoThumbnails[index].getAttribute('data-video');
-        const videoTitle = videoThumbnails[index].getAttribute('data-title');
-        const videoDesc = videoThumbnails[index].getAttribute('data-desc');
-        
-        // עצירת הסרטון הנוכחי
-        mainVideo.pause();
-        
-        // עדכון הסרטון הראשי
-        mainVideo.src = videoSrc;
-        mainVideoTitle.textContent = videoTitle;
-        mainVideoDesc.textContent = videoDesc;
-        
-        // טעינה מחדש של הסרטון
-        mainVideo.load();
-        
-        // עדכון האינדקס הנוכחי
-        currentVideoIndex = index;
-    }
-    
-    // אירועי לחיצה על תמונות ממוזערות
-    videoThumbnails.forEach((thumbnail, index) => {
-        thumbnail.addEventListener('click', function() {
-            changeMainVideo(index);
-        });
-    });
-    
-    // אירועי לחיצה על כפתורי ניווט
-    prevButton.addEventListener('click', function() {
-        let newIndex = currentVideoIndex - 1;
-        if (newIndex < 0) {
-            newIndex = totalVideos - 1;
+        // אירועי לחיצה על כפתורי ניווט
+        if (prevButton && nextButton) {
+            prevButton.addEventListener('click', function() {
+                let newIndex = currentVideoIndex - 1;
+                if (newIndex < 0) {
+                    newIndex = totalVideos - 1;
+                }
+                changeMainVideo(newIndex);
+            });
+            
+            nextButton.addEventListener('click', function() {
+                let newIndex = currentVideoIndex + 1;
+                if (newIndex >= totalVideos) {
+                    newIndex = 0;
+                }
+                changeMainVideo(newIndex);
+            });
         }
-        changeMainVideo(newIndex);
-    });
-    
-    nextButton.addEventListener('click', function() {
-        let newIndex = currentVideoIndex + 1;
-        if (newIndex >= totalVideos) {
-            newIndex = 0;
+        
+        // פונקציונליות החלפה אוטומטית
+        let autoplayInterval;
+        
+        function startAutoplay() {
+            autoplayInterval = setInterval(() => {
+                let newIndex = currentVideoIndex + 1;
+                if (newIndex >= totalVideos) {
+                    newIndex = 0;
+                }
+                changeMainVideo(newIndex);
+            }, 10000); // החלפה כל 10 שניות
         }
-        changeMainVideo(newIndex);
-    });
-    
-    // פונקציונליות החלפה אוטומטית
-    let autoplayInterval;
-    
-    function startAutoplay() {
-        autoplayInterval = setInterval(() => {
-            let newIndex = currentVideoIndex + 1;
-            if (newIndex >= totalVideos) {
-                newIndex = 0;
-            }
-            changeMainVideo(newIndex);
-        }, 10000); // החלפה כל 10 שניות
+        
+        function stopAutoplay() {
+            clearInterval(autoplayInterval);
+        }
+        
+        // הפסקת החלפה אוטומטית באינטראקציה עם המשתמש
+        const carouselContainer = document.querySelector('.video-carousel-container');
+        if (carouselContainer) {
+            carouselContainer.addEventListener('mouseenter', stopAutoplay);
+            carouselContainer.addEventListener('mouseleave', startAutoplay);
+            
+            // התחלת החלפה אוטומטית
+            startAutoplay();
+        }
     }
-    
-    function stopAutoplay() {
-        clearInterval(autoplayInterval);
-    }
-    
-    // הפסקת החלפה אוטומטית באינטראקציה עם המשתמש
-    document.querySelector('.video-carousel-container').addEventListener('mouseenter', stopAutoplay);
-    document.querySelector('.video-carousel-container').addEventListener('mouseleave', startAutoplay);
-    
-    // התחלת החלפה אוטומטית
-    startAutoplay();
+});
 
 // פונקציונליות גלריית התמונות
 document.addEventListener('DOMContentLoaded', function() {
@@ -300,7 +394,7 @@ document.addEventListener('DOMContentLoaded', function() {
             openModal(currentIndex);
         });
     });
-});
+
     
     // פתיחת המודאל עם התמונה הנוכחית
     function openModal(index) {
