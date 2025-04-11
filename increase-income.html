@@ -33,6 +33,20 @@
             text-align: center;
         }
         
+        @media (max-width: 768px) {
+            .income-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .desktop-only {
+                display: none;
+            }
+            
+            .mobile-only {
+                display: block;
+            }
+        }
+        
         .income-content p {
             font-size: 1.1rem;
             line-height: 1.8;
@@ -120,6 +134,7 @@
                 <li><a href="index.html#branches">הסניפים שלנו</a></li>
                 <li><a href="about-luxetech.html" target="_blank">אודות</a></li>
                 <li><a href="index.html#contact">צור קשר</a></li>
+                <li class="mobile-only"><a href="index.html#contact" class="cta-button mobile">בקש הדגמה</a></li>
             </ul>
             <a href="index.html#contact" class="cta-button desktop-only">בקש הדגמה</a>
         </nav>
@@ -231,6 +246,46 @@
         <i class="fab fa-whatsapp"></i>
     </a>
     
+    <script>
+    // סקריפט להנפשת התפריט בגלילה
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('header');
+        header.classList.toggle('scrolled', window.scrollY > 0);
+    });
+
+    // תפריט המבורגר למובייל
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.querySelector('.hamburger-menu');
+        const navLinks = document.querySelector('.nav-links');
+        const navLinksItems = document.querySelectorAll('.nav-links li a');
+        
+        // טוגל תפריט בלחיצה על ההמבורגר
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            document.body.classList.toggle('menu-open'); // מונע גלילה כשהתפריט פתוח
+        });
+        
+        // סגירת התפריט בלחיצה על קישור
+        navLinksItems.forEach(item => {
+            item.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            });
+        });
+        
+        // התאמה לשינוי גודל מסך
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            }
+        });
+    });
+    </script>
+    
     <style>
         .whatsapp-float {
             position: fixed;
@@ -262,6 +317,20 @@
                 font-size: 25px;
                 bottom: 20px;
                 left: 20px;
+            }
+            
+            /* סגנון לכפתור בקש הדגמה במובייל */
+            .cta-button.mobile {
+                display: inline-block;
+                margin-top: 15px;
+                padding: 10px 20px;
+                background: linear-gradient(135deg, #fdbb2d, #b21f1f);
+                color: white;
+                border-radius: 30px;
+                font-weight: 600;
+                font-size: 0.9rem;
+                text-decoration: none;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             }
         }
     </style>
