@@ -102,8 +102,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const imagePaths = {
         'diode-laser': 'https://raw.githubusercontent.com/VIPOCONNECT/11/refs/heads/main/Images/4.Webp',
         'ipl': 'https://raw.githubusercontent.com/VIPOCONNECT/11/refs/heads/main/Images/2.Webp',
-        'ndyag': 'https://raw.githubusercontent.com/VIPOCONNECT/11/refs/heads/main/Images/3.Webp',
-        'rf': 'https://raw.githubusercontent.com/VIPOCONNECT/11/refs/heads/main/Images/1.Webp'
+        'ndyag': 'https://raw.githubusercontent.com/VIPOCONNECT/11/refs/heads/main/Images/1.Webp',
+        'rf': 'https://raw.githubusercontent.com/VIPOCONNECT/11/refs/heads/main/Images/5.Webp'
     };
     
     // פונקציה להחלפת התמונה והכפתור הפעיל
