@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>טיפול באקנה - טיטניום מקס</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Rubik', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .technology-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .content-section h2 {
+            color: #6a11cb;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .content-section p {
+            margin-bottom: 15px;
+        }
+        
+        .tech-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .detail-item {
+            flex: 1;
+            min-width: 250px;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #6a11cb;
+        }
+        
+        .detail-item h4 {
+            margin-top: 0;
+            color: #6a11cb;
+        }
+        
+        .treatment-list, .benefits-list {
+            padding-left: 20px;
+        }
+        
+        .treatment-list li, .benefits-list li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-right: 25px;
+        }
+        
+        .treatment-list li:before, .benefits-list li:before {
+            content: "\f00c";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            right: 0;
+            color: #6a11cb;
+        }
+        
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .tech-details {
+                flex-direction: column;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="technology-page">
+        <div class="page-header">
+            <h1>טיפול באקנה</h1>
+            <p>טיפול יעיל באקנה פעיל, צלקות אקנה ועור שמן באמצעות טכנולוגיות IPL ו-RF משולבות</p>
+        </div>
+        
+        <div class="content-section">
+            <h2>IPL – אור פולסים אינטנסיבי</h2>
+            
+            <div class="tech-details">
+                <div class="detail-item">
+                    <h4>מסננים מתחלפים</h4>
+                    <p>כולל מסננים מתחלפים לפי סוג הטיפול</p>
+                </div>
+                <div class="detail-item">
+                    <h4>ייעוד</h4>
+                    <p>טיפולים מגוונים לבעיות עור, פיגמנטציה, אקנה ונימים</p>
+                </div>
+            </div>
+            
+            <h3>טיפולים אפשריים לפי פילטרים</h3>
+            <ul class="treatment-list">
+                <li>אקנה פעיל ועור שמן (300–490nm)</li>
+                <li>טיפול בכתמים ופיגמנטציה שטחית (530–590nm)</li>
+                <li>חידוש עור ואנטי אייג'ינג (590–640nm)</li>
+                <li>נימי דם וקופרוז (640–690nm)</li>
+                <li>הסרת שיער לעור בהיר (690–800nm)</li>
+            </ul>
+            
+            <h3>יתרונות בולטים</h3>
+            <ul class="benefits-list">
+                <li>טכנולוגיה עדינה ולא פולשנית</li>
+                <li>מתאימה לעור רגיש וללקוחות שלא סובלים מכאב</li>
+                <li>מאפשרת לשלב בטיפול אחד כמה מטרות (אקנה + הבהרה למשל)</li>
+            </ul>
+        </div>
+        
+        <a href="index.html" class="back-button">חזרה לדף הראשי</a>
+    </div>
+</body>
+</html>
